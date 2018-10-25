@@ -1,0 +1,20 @@
+american:
+  - Boston Red Sox
+  - Detroit Tigers
+  - New York Yankees
+national:
+  - New York Mets
+  - Chicago Cubs
+  - Atlanta Braves
+
+CMDL:
+   freq : 1234
+   band : s
+
+Vortex:
+   freq : 2341
+   band : ku
+
+T2:
+   freq : 3412
+   band : fm

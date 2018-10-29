@@ -6,13 +6,23 @@ using namespace YAML;
 using namespace std;
 int main(int argc, char *argv[])
 {
-    YAML::Node node = YAML::LoadFile("config.yaml");
+
+    char bigBuf[4096]={0};
+    int  nn;
+    FILE *fptr = fopen("config.yaml", "r");
+    nn=fread(bigBuf, 1, sizeof(bigBuf), fptr);
+    printf("Read %d bytes\n%s\n", nn, bigBuf);
+    fclose(fptr);
+
+    YAML::Node node = YAML::Load(bigBuf);
+    //YAML::Node node = YAML::LoadFile("config.yaml");
     YAML::Node american = node["american"];
     YAML::Node national = node["national"];
 
     if ( argc != 4 )
     {
         cout << "I need 4 args" << endl;
+        cout << "e.g. "<< argv[0] << " CMDL Vortex T2" << endl;
         return -1;
     }
     Node cmdl = node[argv[1]];
